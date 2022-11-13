@@ -6,40 +6,42 @@
 //
 
 import UIKit
-class HomeVC: UIViewController {
+class HomeVC: BaseVC {
     // MARK: - Outlets
     @IBOutlet private weak var tableView: UITableView!
+    
     // MARK: - Variables
     let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerCell(type: PostTableCell.self)
+    }
+    override func setupView() {
+        tableView.registerCell(type: CountryTableCell.self)
         setupViewModel()
     }
     fileprivate func setupViewModel() {
-        viewModel.getList()
+        viewModel.getAllCountriesList()
         viewModel.successCallback = { [weak self] in
             self?.tableView.reloadData()
         }
         viewModel.failureCallback = { [weak self] errorMessage in
             self?.showMessage(errorMessage)
-//            print("jnje")
         }
     }
 }
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.postList.count
+        viewModel.countryList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueCell(
-            withType: PostTableCell.self,
-            for: indexPath) as? PostTableCell else {
+            withType: CountryTableCell.self,
+            for: indexPath) as? CountryTableCell else {
             return UITableViewCell()
         }
-        cell.configureCell(item: viewModel.postList[indexPath.row])
+        cell.configureCell(item: viewModel.countryList[indexPath.row])
         return cell
     }
 }

@@ -14,9 +14,9 @@ class NetworkRequest {
                           url: String,
                           params: [String: Any] = [:],
                           completion: @escaping(NetworkResponse<T>)->Void) {
-//        print("url: \(url)")
-//        print("param: \(params)")
-//        print("header: \(NetworkManager.shared.header())")
+        print("url: \(url)")
+        print("param: \(params)")
+        print("header: \(NetworkManager.shared.header())")
         AF.request(url,
                    method: .post,
                    parameters: params,
@@ -47,9 +47,9 @@ class NetworkRequest {
                             url: String,
                             params: [String: Any] = [:],
                             completion: @escaping(NetworkResponse<T>)->Void) {
-//        print("url: \(url)")
-//        print("param: \(params)")
-//        print("header: \(NetworkManager.shared.header())")
+        print("url: \(url)")
+        print("param: \(params)")
+        print("header: \(NetworkManager.shared.header())")
         AF.request(url,
                    method: .delete,
                    parameters: params,
@@ -65,9 +65,9 @@ class NetworkRequest {
                            url: String,
                            params: [String: Any] = [:],
                            completion: @escaping(NetworkResponse<T>)->Void) {
-//        print("url: \(url)")
-//        print("param: \(params)")
-//        print("header: \(NetworkManager.shared.header())")
+        print("url: \(url)")
+        print("param: \(params)")
+        print("header: \(NetworkManager.shared.header())")
         AF.request(url,
                    method: .patch,
                    parameters: params,
@@ -83,9 +83,9 @@ class NetworkRequest {
                          url: String,
                          params: [String: Any] = [:],
                          completion: @escaping(NetworkResponse<T>)->Void) {
-//        print("url: \(url)")
-//        print("param: \(params)")
-//        print("header: \(NetworkManager.shared.header())")
+        print("url: \(url)")
+        print("param: \(params)")
+        print("header: \(NetworkManager.shared.header())")
         AF.request(url,
                    method: .put,
                    parameters: params,
@@ -108,7 +108,7 @@ class NetworkRequest {
                     do {
                         let model = try JSONDecoder().decode(T.self, from: responseData)
                         print("parsed")
-                        print("model: \(model)")
+//                        print("model: \(model)")
                         completion(.success(model))
                     } catch {
                         print("failed in catch{}")

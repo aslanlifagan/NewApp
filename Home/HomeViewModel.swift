@@ -7,15 +7,15 @@
 
 import Foundation
 class HomeViewModel {
-    var postList = [PostModel]()
-    let postNetwork = PostNetwork.shared
-    
+    var countryList = Country()
+    let countryNetwork = CountryNetwork.shared
     var successCallback: (()->())?
     var failureCallback: ((String)->())?
     
-    func getList() {
-        postNetwork.getList { [weak self] response in
-            self?.postList = response
+    func getAllCountriesList() {
+        countryNetwork.getAllCountries { [weak self] result in
+            let list = result.sorted(by: { $0.area ?? 0.0 > $1.area ?? 0.0 } )
+            self?.countryList = list
             self?.successCallback?()
         } failure: { [weak self] error in
             self?.failureCallback?(error)

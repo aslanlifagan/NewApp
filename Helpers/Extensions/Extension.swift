@@ -1,5 +1,5 @@
 //
-//   UIViewController-Custom.swift
+//  Extension.swift
 //  NewApp
 //
 //  Created by Fagan Aslanli on 13.11.22.
@@ -91,5 +91,20 @@ extension UIViewController {
             }
         }
         return true
+    }
+}
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                    self?.image = loadedImage
+                }
+            }
+        }
     }
 }

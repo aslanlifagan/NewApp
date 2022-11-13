@@ -8,7 +8,7 @@
 import Alamofire
 
 enum Api: String {
-    case baseURL = "https://jsonplaceholder.typicode.com/"
+    case baseURL = "https://restcountries.com/v3.1/"
 }
 
 enum NetworkResponse<T> {
