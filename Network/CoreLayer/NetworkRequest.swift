@@ -10,6 +10,25 @@ import Alamofire
 class NetworkRequest {
     static let shared = NetworkRequest()
     
+    func request<T: Codable>(type: T.Type,
+                            url: String,
+                            method: HTTPMethod,
+                            params: [String: Any]? = nil,
+                            completion: @escaping(NetworkResponse<T>)->Void) {
+        print("url: \(url)")
+        print("param: \(params ?? [:])")
+        print("header: \(NetworkManager.shared.header())")
+        AF.request(url,
+                   method: method,
+                   parameters: params,
+                   encoding: JSONEncoding.default,
+                   headers: NetworkManager.shared.header()).responseData { response in
+            self.handleResponseData(response: response) { complete in
+                completion(complete)
+            }
+        }
+    }
+    
     func post<T: Codable>(type: T.Type,
                           url: String,
                           params: [String: Any] = [:],
