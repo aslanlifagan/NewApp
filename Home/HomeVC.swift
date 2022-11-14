@@ -21,10 +21,10 @@ class HomeVC: BaseVC {
         setupViewModel()
     }
     fileprivate func setupViewModel() {
-        HomeVC.showUniversalLoadingView(true)
+        startLoading()
         viewModel.getAllCountriesList()
         viewModel.successCallback = { [weak self] in
-            HomeVC.showUniversalLoadingView(false)
+            self?.stopLoading()
             self?.tableView.reloadData()
         }
         viewModel.failureCallback = { [weak self] errorMessage in
