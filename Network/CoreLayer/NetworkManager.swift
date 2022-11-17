@@ -24,7 +24,7 @@ struct NetworkManager {
     }
     
     func requestUrl(url: String) -> String {
-        url
+        Api.baseURL.rawValue + url
     }
 }
 
