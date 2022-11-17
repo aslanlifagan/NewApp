@@ -14,11 +14,12 @@ import UIKit
  */
 
 enum StoryboardType {
-    case main
+    case main, login
     
     func getName() -> String {
         switch self {
         case .main: return "Main"
+        case .login: return "Login"
         }
     }
 }
@@ -29,12 +30,5 @@ class Navigator {
     // MARK: - Public Functions
     public func getStoryboard(with name: StoryboardType) -> UIStoryboard {
         return UIStoryboard(name: name.getName(), bundle: nil)
-    }
-    
-    // MARK: - Main Roots
-    func getMainRoot() -> BaseNavigation {
-        let nav = getStoryboard(with: .main).instantiateInitialViewController() as! BaseNavigation
-        nav.setupFullScreenModal()
-        return nav
     }
 }

@@ -16,7 +16,7 @@ enum CountryManager {
     var path: String {
         switch self {
         case .all:
-            return NetworkManager.shared.requestUrl(url: CountryEndpoint.all.rawValue)
+            return NetworkManager.shared.requestUrl(url: "https://restcountries.com/v3.1/all")
         }
     }
 }

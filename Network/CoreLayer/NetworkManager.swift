@@ -8,7 +8,7 @@
 import Alamofire
 
 enum Api: String {
-    case baseURL = "https://restcountries.com/v3.1/"
+    case baseURL = "http://faradheus-001-site1.itempurl.com/api/"
 }
 
 enum NetworkResponse<T> {
@@ -24,7 +24,7 @@ struct NetworkManager {
     }
     
     func requestUrl(url: String) -> String {
-        Api.baseURL.rawValue + url
+        url
     }
 }
 

@@ -29,92 +29,92 @@ class NetworkRequest {
         }
     }
     
-    func post<T: Codable>(type: T.Type,
-                          url: String,
-                          params: [String: Any] = [:],
-                          completion: @escaping(NetworkResponse<T>)->Void) {
-        print("url: \(url)")
-        print("param: \(params)")
-        print("header: \(NetworkManager.shared.header())")
-        AF.request(url,
-                   method: .post,
-                   parameters: params,
-                   encoding: JSONEncoding.default,
-                   headers: NetworkManager.shared.header()).responseData { response in
-                    self.handleResponseData(response: response) { complete in
-                        completion(complete)
-                    }
-                   }
-    }
-    
-    func get<T: Codable>(type: T.Type,
-                         url: String,
-                         completion: @escaping(NetworkResponse<T>)->Void) {
-        print("url: \(url)")
-        print("header: \(NetworkManager.shared.header())")
-        AF.request(url,
-                   method: .get,
-                   encoding: JSONEncoding.default,
-                   headers: NetworkManager.shared.header()).responseData { response in
-                    self.handleResponseData(response: response) { complete in
-                        completion(complete)
-                    }
-                   }
-    }
-    
-    func delete<T: Codable>(type: T.Type,
-                            url: String,
-                            params: [String: Any] = [:],
-                            completion: @escaping(NetworkResponse<T>)->Void) {
-        print("url: \(url)")
-        print("param: \(params)")
-        print("header: \(NetworkManager.shared.header())")
-        AF.request(url,
-                   method: .delete,
-                   parameters: params,
-                   encoding: JSONEncoding.default,
-                   headers: NetworkManager.shared.header()).responseData { response in
-            self.handleResponseData(response: response) { complete in
-                completion(complete)
-            }
-        }
-    }
-    
-    func patch<T: Codable>(type: T.Type,
-                           url: String,
-                           params: [String: Any] = [:],
-                           completion: @escaping(NetworkResponse<T>)->Void) {
-        print("url: \(url)")
-        print("param: \(params)")
-        print("header: \(NetworkManager.shared.header())")
-        AF.request(url,
-                   method: .patch,
-                   parameters: params,
-                   encoding: JSONEncoding.default,
-                   headers: NetworkManager.shared.header()).responseData { response in
-            self.handleResponseData(response: response) { complete in
-                completion(complete)
-            }
-        }
-    }
-    
-    func put<T: Codable>(type: T.Type,
-                         url: String,
-                         params: [String: Any] = [:],
-                         completion: @escaping(NetworkResponse<T>)->Void) {
-        print("url: \(url)")
-        print("param: \(params)")
-        print("header: \(NetworkManager.shared.header())")
-        AF.request(url,
-                   method: .put,
-                   parameters: params,
-                   encoding: JSONEncoding.default,
-                   headers: NetworkManager.shared.header()).responseData { response in
-            self.handleResponseData(response: response) { complete in
-                completion(complete)
-            }
-        }
-    }
+//    func post<T: Codable>(type: T.Type,
+//                          url: String,
+//                          params: [String: Any] = [:],
+//                          completion: @escaping(NetworkResponse<T>)->Void) {
+//        print("url: \(url)")
+//        print("param: \(params)")
+//        print("header: \(NetworkManager.shared.header())")
+//        AF.request(url,
+//                   method: .post,
+//                   parameters: params,
+//                   encoding: JSONEncoding.default,
+//                   headers: NetworkManager.shared.header()).responseData { response in
+//                    self.handleResponseData(response: response) { complete in
+//                        completion(complete)
+//                    }
+//                   }
+//    }
+//
+//    func get<T: Codable>(type: T.Type,
+//                         url: String,
+//                         completion: @escaping(NetworkResponse<T>)->Void) {
+//        print("url: \(url)")
+//        print("header: \(NetworkManager.shared.header())")
+//        AF.request(url,
+//                   method: .get,
+//                   encoding: JSONEncoding.default,
+//                   headers: NetworkManager.shared.header()).responseData { response in
+//                    self.handleResponseData(response: response) { complete in
+//                        completion(complete)
+//                    }
+//                   }
+//    }
+//
+//    func delete<T: Codable>(type: T.Type,
+//                            url: String,
+//                            params: [String: Any] = [:],
+//                            completion: @escaping(NetworkResponse<T>)->Void) {
+//        print("url: \(url)")
+//        print("param: \(params)")
+//        print("header: \(NetworkManager.shared.header())")
+//        AF.request(url,
+//                   method: .delete,
+//                   parameters: params,
+//                   encoding: JSONEncoding.default,
+//                   headers: NetworkManager.shared.header()).responseData { response in
+//            self.handleResponseData(response: response) { complete in
+//                completion(complete)
+//            }
+//        }
+//    }
+//
+//    func patch<T: Codable>(type: T.Type,
+//                           url: String,
+//                           params: [String: Any] = [:],
+//                           completion: @escaping(NetworkResponse<T>)->Void) {
+//        print("url: \(url)")
+//        print("param: \(params)")
+//        print("header: \(NetworkManager.shared.header())")
+//        AF.request(url,
+//                   method: .patch,
+//                   parameters: params,
+//                   encoding: JSONEncoding.default,
+//                   headers: NetworkManager.shared.header()).responseData { response in
+//            self.handleResponseData(response: response) { complete in
+//                completion(complete)
+//            }
+//        }
+//    }
+//
+//    func put<T: Codable>(type: T.Type,
+//                         url: String,
+//                         params: [String: Any] = [:],
+//                         completion: @escaping(NetworkResponse<T>)->Void) {
+//        print("url: \(url)")
+//        print("param: \(params)")
+//        print("header: \(NetworkManager.shared.header())")
+//        AF.request(url,
+//                   method: .put,
+//                   parameters: params,
+//                   encoding: JSONEncoding.default,
+//                   headers: NetworkManager.shared.header()).responseData { response in
+//            self.handleResponseData(response: response) { complete in
+//                completion(complete)
+//            }
+//        }
+//    }
     
     private func handleResponseData<T: Codable>(response: AFDataResponse<Data>,
                                                 completion: @escaping(NetworkResponse<T>) -> ()) {

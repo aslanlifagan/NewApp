@@ -16,7 +16,7 @@ class CountryNetwork: CountryNetworkProtocol {
     
     func getAllCountries(completion: @escaping (Country) -> (), failure: @escaping (String) -> ()) {
         let url = CountryManager.all.path
-        network.get(type: Country.self, url: url) { response in
+        network.request(type: Country.self,url: url, method: .get) { response in
             switch response {
             case .success(let model):
                 completion(model)
