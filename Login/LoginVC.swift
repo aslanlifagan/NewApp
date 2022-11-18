@@ -48,12 +48,16 @@ class LoginVC: BaseVC {
         viewModel.login(body: body)
         viewModel.successCallback = { [weak self] in
             self?.stopLoading()
-            self?.presentVC(Navigator.instance.getMainRoot(), animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            self.dismissSimple()
+        }
         }
         viewModel.failureCallback = { [weak self] errorMessage in
             self?.stopLoading()
             self?.showMessage(errorMessage)
         }
+        
     }
     
     // MARK: @objc Functions

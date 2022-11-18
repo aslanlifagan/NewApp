@@ -20,6 +20,9 @@ class RegisterVC: BaseVC {
     @IBOutlet private weak var registerButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
     
+    // MARK: Variables
+    let viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,10 +31,28 @@ class RegisterVC: BaseVC {
     }
     override func setupTargets() {
         super.setupTargets()
+        registerButton.addTarget(self, action: #selector(registerButtonClicked), for: .touchUpInside)
     }
     override func setupLabels() {
         super.setupLabels()
         navbar.setTitle(title: "Register")
     }
+    
+    // MARK: - Private Functions
+    private func sendRequest() {
+        let params: [String: Any] = [
+            "Name": "Fagan",
+            "Surname": "Aslanli",
+            "Username": "Fagan",
+            "Password": "123456",
+            "RepeatePassword": "123456",
+            "Phone": "0555363996",
+            "Email": "aslanli9696@gmail.com",
+            "Gender": "Male",
+        ]
+    }
     // MARK: @objc Functions
+    @objc private func registerButtonClicked() {
+        sendRequest()
+    }
 }
