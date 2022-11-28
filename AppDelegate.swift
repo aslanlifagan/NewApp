@@ -15,5 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }
+    
+    func login() {
+        window?.rootViewController = Navigator.instance.getLoginRoot()
+        window?.makeKeyAndVisible()
+    }
+    func main() {
+        window?.rootViewController = Navigator.instance.getMainRoot()
+        window?.makeKeyAndVisible()
+    }
 }
 

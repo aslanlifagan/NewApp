@@ -10,7 +10,6 @@ import UIKit
 class LoginVC: BaseVC {
     // MARK: Outlets
     @IBOutlet private weak var userNameTextField: CustomUITextField!
-    @IBOutlet private weak var emailTextField: CustomUITextField!
     @IBOutlet private weak var passwordTextField: CustomUITextField!
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var registerButton: UIButton!
@@ -32,26 +31,21 @@ class LoginVC: BaseVC {
     }
     override func setupLabels() {
         super.setupLabels()
-        userNameTextField.text = "Aslanli96"
-        emailTextField.text = "aslanli9696@gmail.com"
-        passwordTextField.text = "Aslanli96."
+        userNameTextField.text = "Vasif"
+        passwordTextField.text = "123"
     }
     
     // MARK: - Private Functions
     private func sendRequest() {
         let body: [String: Any] = [
-            "username": userNameTextField.text ?? "",
-            "email": emailTextField.text ?? "",
+            "usernameOrEmail": userNameTextField.text ?? "",
             "password": passwordTextField.text ?? ""
         ]
         startLoading()
         viewModel.login(body: body)
         viewModel.successCallback = { [weak self] in
             self?.stopLoading()
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else {return}
-            self.dismissSimple()
-        }
+            (UIApplication.shared.delegate as? AppDelegate)?.main()
         }
         viewModel.failureCallback = { [weak self] errorMessage in
             self?.stopLoading()
@@ -66,18 +60,10 @@ class LoginVC: BaseVC {
     }
     
     @objc func submitButtonClicked () {
-        let email = emailTextField.text ?? "", pass = passwordTextField.text ?? "", usern = userNameTextField.text ?? ""
+        let  pass = passwordTextField.text ?? "", usern = userNameTextField.text ?? ""
         
         if usern.isEmpty {
             showMessage("Username is required")
-            return
-        }
-        if email.isEmpty {
-            showMessage("Email is required")
-            return
-        }
-        if !email.isEmail {
-            showMessage("Email is invalid")
             return
         }
         if pass.isEmpty {
@@ -90,14 +76,14 @@ class LoginVC: BaseVC {
 
 extension  LoginVC: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let email = emailTextField.text ?? "", pass = passwordTextField.text ?? "", user = userNameTextField.text ?? ""
-        let emailTyped = !email.isEmpty, passTyped = !pass.isEmpty, userTyped = !user.isEmpty
-        Helper.checkSubmitButton(btn: submitButton, disabled: !(emailTyped && passTyped && userTyped))
+        let pass = passwordTextField.text ?? "", user = userNameTextField.text ?? ""
+        let passTyped = !pass.isEmpty, userTyped = !user.isEmpty
+        Helper.checkSubmitButton(btn: submitButton, disabled: !(passTyped && userTyped))
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case emailTextField:
-            emailTextField.resignFirstResponder()
+        case userNameTextField:
+            userNameTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
             break
         case passwordTextField:

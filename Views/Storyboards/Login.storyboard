@@ -33,7 +33,7 @@
         <!--LoginVC-->
         <scene sceneID="xYu-gk-7Nb">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="Ied-O4-GmU" customClass="LoginVC" customModule="Derby" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="Ied-O4-GmU" customClass="LoginVC" customModule="NewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Teb-ac-kFa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dED-T7-FR5">
-                                <rect key="frame" x="24" y="300" width="366" height="296"/>
+                                <rect key="frame" x="24" y="340" width="366" height="216"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b4p-Av-Lf4" customClass="CustomUITextField" customModule="NewApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="40"/>
@@ -69,31 +69,8 @@
                                             <outlet property="delegate" destination="Ied-O4-GmU" id="KUh-4Y-gG6"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jbC-B4-Hh9" customClass="CustomUITextField" customModule="NewApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="366" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="xQd-yo-eRa"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" systemColor="systemTealColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="delegate" destination="Ied-O4-GmU" id="Vh7-fB-fo9"/>
-                                        </connections>
-                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MW2-A9-Cn7" customClass="CustomUITextField" customModule="NewApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="160" width="366" height="40"/>
+                                        <rect key="frame" x="0.0" y="80" width="366" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="DmH-Ml-yys"/>
@@ -116,7 +93,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dop-bv-kkM">
-                                        <rect key="frame" x="0.0" y="240" width="366" height="56"/>
+                                        <rect key="frame" x="0.0" y="160" width="366" height="56"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="UjG-3c-fPo"/>
@@ -166,7 +143,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="wxD-SN-ZS6"/>
                     <connections>
-                        <outlet property="emailTextField" destination="jbC-B4-Hh9" id="bpn-Df-7Rj"/>
                         <outlet property="passwordTextField" destination="MW2-A9-Cn7" id="Qhb-Dq-V1f"/>
                         <outlet property="registerButton" destination="DL3-sI-6CJ" id="oyi-Yw-tYc"/>
                         <outlet property="submitButton" destination="dop-bv-kkM" id="bcv-a5-4xR"/>
@@ -399,6 +375,9 @@
         </designable>
         <designable name="Gmv-St-2ym">
             <size key="intrinsicContentSize" width="39" height="21"/>
+        </designable>
+        <designable name="MW2-A9-Cn7">
+            <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
         <designable name="b4p-Av-Lf4">
             <size key="intrinsicContentSize" width="102.5" height="34"/>
