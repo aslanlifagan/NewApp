@@ -19,4 +19,12 @@ class LoginViewModel {
             self?.failureCallback?(error)
         }
     }
+    func register(params: [String: Any]) {
+        accountNetwork.register(param: params) { [weak self] result in
+            self?.successCallback?()
+            AuthService.setUser(user: result)
+        } failure: { [weak self] error in
+            self?.failureCallback?(error)
+        }
+    }
 }

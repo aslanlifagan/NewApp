@@ -29,23 +29,23 @@ class NetworkRequest {
         }
     }
     
-//    func post<T: Codable>(type: T.Type,
-//                          url: String,
-//                          params: [String: Any] = [:],
-//                          completion: @escaping(NetworkResponse<T>)->Void) {
-//        print("url: \(url)")
-//        print("param: \(params)")
-//        print("header: \(NetworkManager.shared.header())")
-//        AF.request(url,
-//                   method: .post,
-//                   parameters: params,
-//                   encoding: JSONEncoding.default,
-//                   headers: NetworkManager.shared.header()).responseData { response in
-//                    self.handleResponseData(response: response) { complete in
-//                        completion(complete)
-//                    }
-//                   }
-//    }
+    func post<T: Codable>(type: T.Type,
+                          url: String,
+                          params: [String: Any] = [:],
+                          completion: @escaping(NetworkResponse<T>)->Void) {
+        print("url: \(url)")
+        print("param: \(params)")
+        print("header: \(NetworkManager.shared.header())")
+        AF.request(url,
+                   method: .post,
+                   parameters: params,
+                   encoding: URLEncoding(destination: .queryString),
+                   headers: NetworkManager.shared.header()).responseData { response in
+                    self.handleResponseData(response: response) { complete in
+                        completion(complete)
+                    }
+                   }
+    }
 //
 //    func get<T: Codable>(type: T.Type,
 //                         url: String,

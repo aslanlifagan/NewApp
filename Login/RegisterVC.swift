@@ -41,15 +41,25 @@ class RegisterVC: BaseVC {
     // MARK: - Private Functions
     private func sendRequest() {
         let params: [String: Any] = [
-            "Name": "Fagan",
-            "Surname": "Aslanli",
-            "Username": "Fagan",
-            "Password": "123456",
-            "RepeatePassword": "123456",
+            "Name": "aa",
+            "Surname": "aa",
+            "Username": "aa",
+            "Password": "111",
+            "RepeatePassword": "111",
             "Phone": "0555363996",
-            "Email": "aslanli9696@gmail.com",
+            "Email": "aas@gmail.com",
             "Gender": "Male",
         ]
+        startLoading()
+        viewModel.register(params: params)
+        viewModel.successCallback = { [weak self] in
+            self?.stopLoading()
+            self?.showMessage("geldi")
+        }
+        viewModel.failureCallback = { [weak self] errorMessage in
+            self?.stopLoading()
+            self?.showMessage(errorMessage)
+        }
     }
     // MARK: @objc Functions
     @objc private func registerButtonClicked() {
